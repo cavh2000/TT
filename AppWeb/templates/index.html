@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>
+        TT2 2026-A176
+    </title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial;
+            display:flex;
+            height:100vh;
+        }
+
+        #panel{
+
+            width:320px;
+
+            background:#f4f4f4;
+
+            padding:20px;
+
+            box-sizing:border-box;
+
+            overflow:auto;
+
+            border-right:2px solid #ccc;
+        }
+
+        #mapa{
+            flex:1;
+        }
+
+        input{
+
+            width:100%;
+
+            padding:8px;
+
+            margin-bottom:15px;
+
+            box-sizing:border-box;
+        }
+
+        button{
+
+            width:100%;
+
+            padding:12px;
+
+            background:#2c7be5;
+
+            color:white;
+
+            border:none;
+
+            cursor:pointer;
+
+            border-radius:5px;
+
+            font-size:15px;
+        }
+
+        button:hover{
+            background:#1a5bb8;
+        }
+
+        h2{
+            margin-top:0;
+        }
+
+        .radio-group{
+            margin-bottom:20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div id="panel">
+
+    <h2>
+        TT2 2026-A176
+    </h2>
+
+    <form method="POST">
+
+        <label>
+            Número de cámaras nuevas
+        </label>
+
+        <input
+            type="number"
+            name="num"
+            value="380"
+        >
+
+        <label>
+            Distancia con cámaras nuevas
+        </label>
+
+        <input
+            type="number"
+            name="dist_nuevas"
+            value="100"
+        >
+
+        <label>
+            Distancia con cámaras existentes
+        </label>
+
+        <input
+            type="number"
+            name="dist_existentes"
+            value="100"
+        >
+
+        <label>
+            Radio de cobertura visual (metros)
+        </label>
+
+        <input
+            type="number"
+            name="buffer_cobertura"
+            value="150"
+        >
+
+        <label>
+            Red a utilizar
+        </label>
+
+        <div class="radio-group">
+
+            <input
+                type="radio"
+                name="red"
+                value="MLP"
+                checked
+            > MLP
+
+            <br>
+
+            <input
+                type="radio"
+                name="red"
+                value="GNN"
+            > GNN
+
+        </div>
+
+        <div style="display:flex; gap:10px;">
+
+        <button type="submit">
+            Generar propuestas
+        </button>
+
+        <a href="/exportar_geojson">
+
+            <button type="button">
+                Exportar GeoJSON
+            </button>
+
+        </a>
+
+    </div>
+
+    </form>
+
+</div>
+
+<div id="mapa">
+
+    {% if mapa %}
+        {{ mapa|safe }}
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
